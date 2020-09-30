@@ -1,11 +1,10 @@
 import React from 'react';
 
 
-const ExpenseListItem = ({ description, amount, createdAt }) => (
+const ExpenseListItem = ({description, amount, createdAt }) => (
   <div>
-    <p>{description}</p>
-    <p>{amount}</p>
-    <p>{createdAt}</p>
+    <h3>{description}</h3>
+    <p>{amount} - {createdAt}</p>
   </div>
 )
 
