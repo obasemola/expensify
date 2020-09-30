@@ -1,10 +1,44 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import AppRouter from './routers/AppRouter'
+import { Provider } from 'react-redux';
+import AppRouter from './routers/AppRouter';
+import configureStore from './store/configureStore';
+import getfilteredExpenses from './selectors/filterExpenses';
+import { addExpense } from './actions/expenses';
+import { setTextFilter } from './actions/filters';
 import 'normalize.css/normalize.css'
 import './styles/styles.scss'
 const appRoot = document.getElementById('app');
-ReactDOM.render(<AppRouter/>, appRoot)
+
+const store = configureStore();
+
+
+store.subscribe(() => {
+  const state = store.getState()
+  const filteredExpenses = getfilteredExpenses(state.expenses, state.filters)
+  console.log(filteredExpenses)
+
+})
+
+
+
+
+store.dispatch(addExpense({ description: 'Water bill' }));
+store.dispatch(addExpense({ description: 'Gas bill' }));
+store.dispatch(setTextFilter('bill'))
+
+
+const jsx = (
+  <Provider store={store}>
+    <AppRouter/>
+  </Provider>
+)
+
+
+
+
+
+ReactDOM.render(jsx, appRoot)
 
 
 
