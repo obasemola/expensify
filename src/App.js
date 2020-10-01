@@ -13,12 +13,12 @@ const appRoot = document.getElementById('app');
 const store = configureStore();
 
 
-store.subscribe(() => {
-  const state = store.getState()
-  const filteredExpenses = getfilteredExpenses(state.expenses, state.filters)
-  console.log(filteredExpenses)
+// store.subscribe(() => {
+//   const state = store.getState()
+//   const filteredExpenses = getfilteredExpenses(state.expenses, state.filters)
+//   console.log(filteredExpenses)
 
-})
+// })
 
 
 
