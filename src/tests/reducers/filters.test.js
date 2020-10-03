@@ -42,7 +42,7 @@ test('should set sortBy to date', () => {
   expect(state).toEqual(result)
 });
 
-test('should set textfilter to update', () => {
+test('should set textfilter', () => {
   const state = filterReducer(undefined, { type: 'SET_TEXT_FILTER', update: 'rent' })
 
 
@@ -55,12 +55,24 @@ test('should set textfilter to update', () => {
 });
 
 test('should set start date', () => {
-  const state = filterReducer(undefined, { type: 'SET_START_DATE', update: 'rent' })
+  const state = filterReducer(undefined, { type: 'SET_START_DATE', startDate: moment(0) })
 
 
   const result = {
     ...state,
-    text: 'rent'
+    startDate: moment(0)
+  }
+
+  expect(state).toEqual(result)
+});
+
+test('should set end date', () => {
+  const state = filterReducer(undefined, { type: 'SET_END_DATE', endDate: moment(12345) })
+
+
+  const result = {
+    ...state,
+    endDate: moment(12345)
   }
 
   expect(state).toEqual(result)
